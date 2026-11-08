@@ -1,0 +1,70 @@
+{
+  "name": "@eo-locale/react-native",
+  "version": "1.8.0",
+  "description": "Easy way to localize your React Native application",
+  "author": "Maksim Sharipov <m.v.sharipov@gmail.com>",
+  "homepage": "https://eo-locale.netlify.app",
+  "license": "ISC",
+  "main": "lib/index.cjs",
+  "module": "lib/index.js",
+  "type": "module",
+  "exports": {
+    "import": "./lib/index.js",
+    "require": "./lib/index.cjs"
+  },
+  "types": "lib/index.d.ts",
+  "engines": {
+    "node": ">= 12"
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "rollup --config config/rollup.config.js",
+    "postbuild": "copyup \"src/**/*.flow\" lib && size-limit",
+    "prepare": "npm run build"
+  },
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ibitcy/eo-locale.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ibitcy/eo-locale/issues"
+  },
+  "keywords": [
+    "internationalization",
+    "intl",
+    "messageformat",
+    "plural",
+    "icu",
+    "react",
+    "tiny",
+    "i18n"
+  ],
+  "size-limit": [
+    {
+      "path": "lib/index.cjs",
+      "limit": "2.5kB"
+    }
+  ],
+  "dependencies": {
+    "@eo-locale/core": "^1.8.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.10",
+    "react": "^18.2.0"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0"
+  },
+  "gitHead": "85f16888e69bd8962e3e20ad92065a6ef5afcb22"
+}

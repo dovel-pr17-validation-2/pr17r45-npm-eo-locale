@@ -1,0 +1,66 @@
+---
+id: datetime
+title: DateTime
+---
+import { DateTime } from '@eo-locale/react';
+import { Highlight } from '../../src/components/Highlight';
+import {
+  LanguageSelector,
+  useLanguage,
+} from '../../src/components/LanguageSelector';
+
+`DateTime` component provides ability to format values of `Date`.
+Full list of supported properties you can find on [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/DateTimeFormat) page
+
+To use this component, you need to import the component as the followings:
+
+#### React
+
+```jsx
+import { DateTime } from '@eo-locale/react';
+```
+
+#### Preact
+
+```jsx
+import { DateTime } from '@eo-locale/preact';
+```
+
+#### React Native
+
+```jsx
+import { DateTime } from '@eo-locale/react-native';
+```
+
+And add into your application like this:
+
+```jsx
+export function SomeComponent() {
+  return (
+    <DateTime
+      language={appLanguage}
+      value={new Date()}
+      day="numeric"
+      month="long"
+      weekday="long"
+      year="numeric"
+    />
+  );
+}
+```
+
+As above example, component will display <LanguageSelector><Highlight><Preview/></Highlight></LanguageSelector>
+
+export const Preview = () => {
+  const language = useLanguage();
+  return (
+    <DateTime
+      day="numeric"
+      language={language}
+      month="long"
+      value={new Date()}
+      weekday="long"
+      year="numeric"
+    />
+  );
+};

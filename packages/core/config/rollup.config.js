@@ -1,0 +1,41 @@
+import terser from '@rollup/plugin-terser';
+import typescript from 'rollup-plugin-typescript2';
+import clear from 'rollup-plugin-clear';
+import path from 'path';
+
+export default [
+  {
+    input: path.resolve(process.cwd(), 'src/index.ts'),
+    output: [
+      {
+        file: path.resolve(process.cwd(), 'lib/index.cjs'),
+        format: 'cjs',
+      },
+      {
+        file: path.resolve(process.cwd(), 'lib/index.js'),
+        format: 'es',
+      },
+    ],
+    external: [],
+    plugins: [
+      clear({
+        targets: [path.resolve(process.cwd(), 'lib')],
+      }),
+      typescript({
+        // picomatch 2.3.2+ no longer matches the default `*.ts+(|x)` pattern
+        include: ['*.ts', '**/*.ts', '*.tsx', '**/*.tsx'],
+      }),
+      terser({
+        toplevel: true,
+        compress: {
+          passes: 3,
+          pure_getters: true,
+          unsafe: true,
+        },
+        output: {
+          comments: false,
+        },
+      }),
+    ],
+  },
+];
